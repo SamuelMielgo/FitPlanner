@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0f14;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.fit { color: white; }
+.planner { color: #b6ff00; }
+
+.menu {
+  display: flex;
+  gap: 25px;
+}
+
+.menu a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: white;
+}
+
+.btn {
+  background: #b6ff00;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero span {
+  color: #b6ff00;
+}
+
+/* GENERADOR */
+.generador {
+  text-align: center;
+  padding: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: auto;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  background: #b6ff00;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* RESULTADO */
+.resultado {
+  padding: 40px;
+}
+
+#rutina {
+  margin-top: 20px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>FitPlanner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">
+    <span class="fit">Fit</span><span class="planner">Planner</span>
+  </div>
+
+  <nav class="menu">
+    <a href="#">Inicio</a>
+    <a href="#generador">Generador</a>
+    <a href="#">Ejercicios</a>
+    <a href="#">Sobre mí</a>
+  </nav>
+
+  <button class="btn">Usar gratis</button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Tu rutina. Tu objetivo. <span>Tu plan.</span></h1>
+  <p>Crea rutinas personalizadas en segundos</p>
+</section>
+
+<!-- GENERADOR -->
+<section id="generador" class="generator">
+  <h2>Generar rutina</h2>
+
+  <div class="form">
+    <input type="number" id="peso" placeholder="Peso (kg)">
+    <input type="number" id="altura" placeholder="Altura (cm)">
+
+    <select id="objetivo">
+      <option value="grasa">Perder grasa</option>
+      <option value="musculo">Ganar músculo</option>
+    </select>
+
+    <select id="dias">
+      <option value="3">3 días</option>
+      <option value="4">4 días</option>
+      <option value="5">5 días</option>
+    </select>
+
+    <button onclick="generarRutina()">Generar rutina</button>
+  </div>
+</section>
+
+<!-- RESULTADO -->
+<section class="resultado">
+  <h2>Tu rutina</h2>
+  <div id="rutina"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
