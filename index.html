@@ -1,63 +1,199 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>FitPlanner</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPlanner | Tu Entrenamiento Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js for exporting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
+    <header class="main-header">
+        <div class="logo">
+            Fit<span>Planner</span>
+        </div>
+        <nav class="main-nav">
+            <a href="#">Inicio</a>
+            <a href="#" class="active">Generador</a>
+            <a href="#">Ejercicios</a>
+            <a href="#">Sobre mí</a>
+        </nav>
+        <button class="btn-primary rounded-btn">Usar gratis</button>
+    </header>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="logo">
-    <span class="fit">Fit</span><span class="planner">Planner</span>
-  </div>
+    <main class="main-container">
+        <!-- Hero and Form Section -->
+        <section class="generator-section">
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fas fa-bolt"></i> GRATIS Y SIN REGISTRO
+                </div>
+                <h1>TU RUTINA.<br>TU OBJETIVO.<br><span class="neon-text">TU PLAN.</span></h1>
+                <p>Crea rutinas de entrenamiento personalizadas en segundos. Solo responde unas preguntas y obtén tu plan semanal adaptado a ti.</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fas fa-dumbbell"></i>
+                        <div>
+                            <strong>100%</strong>
+                            <span>Personalizado</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <div>
+                            <strong>Rutinas</strong>
+                            <span>Efectivas</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-download"></i>
+                        <div>
+                            <strong>Descarga</strong>
+                            <span>en PDF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <nav class="menu">
-    <a href="#">Inicio</a>
-    <a href="#generador">Generador</a>
-    <a href="#">Ejercicios</a>
-    <a href="#">Sobre mí</a>
-  </nav>
+            <div class="form-card">
+                <div class="form-header">
+                    <h2><span class="neon-number">1.</span> Cuéntanos sobre ti</h2>
+                    <div class="step-indicator">Paso 1 de 2 <span class="dot active"></span><span class="dot"></span></div>
+                </div>
 
-  <button class="btn">Usar gratis</button>
-</header>
+                <form id="generator-form">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Edad</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="age" placeholder="Ej: 20" min="12" max="100">
+                                <span class="suffix">años</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Peso</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="weight" placeholder="Ej: 70" min="30" max="250">
+                                <span class="suffix">kg</span>
+                            </div>
+                        </div>
+                    </div>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Tu rutina. Tu objetivo. <span>Tu plan.</span></h1>
-  <p>Crea rutinas personalizadas en segundos</p>
-</section>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Altura</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="height" placeholder="Ej: 175" min="100" max="250">
+                                <span class="suffix">cm</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Nivel</label>
+                            <select id="level">
+                                <option value="beginner">Principiante</option>
+                                <option value="intermediate">Intermedio</option>
+                                <option value="advanced">Avanzado</option>
+                            </select>
+                        </div>
+                    </div>
 
-<!-- GENERADOR -->
-<section id="generador" class="generator">
-  <h2>Generar rutina</h2>
+                    <div class="input-group">
+                        <label>Objetivo</label>
+                        <div class="segmented-control" id="goal-control">
+                            <button type="button" class="segment active" data-value="lose">
+                                <i class="fas fa-fire"></i> Perder grasa
+                            </button>
+                            <button type="button" class="segment" data-value="gain">
+                                <i class="fas fa-biceps"></i> Ganar músculo
+                            </button>
+                            <input type="hidden" id="goal" value="lose">
+                        </div>
+                    </div>
 
-  <div class="form">
-    <input type="number" id="peso" placeholder="Peso (kg)">
-    <input type="number" id="altura" placeholder="Altura (cm)">
+                    <div class="input-row splits">
+                        <div class="input-group">
+                            <label>Días de entrenamiento</label>
+                            <div class="segmented-control small" id="days-control">
+                                <button type="button" class="segment" data-value="3">3 días</button>
+                                <button type="button" class="segment" data-value="4">4 días</button>
+                                <button type="button" class="segment active" data-value="5">5 días</button>
+                            </div>
+                            <input type="hidden" id="days" value="5">
+                        </div>
+                        <div class="input-group">
+                            <label>¿Tienes gimnasio?</label>
+                            <div class="segmented-control small" id="gym-control">
+                                <button type="button" class="segment active" data-value="yes">Sí</button>
+                                <button type="button" class="segment" data-value="no">No</button>
+                            </div>
+                             <input type="hidden" id="gym" value="yes">
+                        </div>
+                    </div>
 
-    <select id="objetivo">
-      <option value="grasa">Perder grasa</option>
-      <option value="musculo">Ganar músculo</option>
-    </select>
+                    <button type="button" class="btn-primary full-width" onclick="generateRoutine()">
+                        GENERAR MI RUTINA <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
 
-    <select id="dias">
-      <option value="3">3 días</option>
-      <option value="4">4 días</option>
-      <option value="5">5 días</option>
-    </select>
+        <!-- Results Section (Hidden initially) -->
+        <section id="results-section" class="results-hidden">
+            <!-- This section content will be exported to PDF -->
+            <div id="pdf-content">
+                <div class="results-header">
+                    <div>
+                        <div class="badge small"><i class="fas fa-star"></i> TU RUTINA PERSONALIZADA</div>
+                        <h2>Rutina Semanal</h2>
+                        <p class="subtitle" id="routine-summary">Objetivo: Perder grasa • Nivel: Principiante • 5 días</p>
+                    </div>
+                    <div class="actions no-print">
+                        <button type="button" class="btn-outline" onclick="exportPDF()">
+                            <i class="fas fa-download"></i> Descargar PDF
+                        </button>
+                        <button type="button" class="btn-outline" onclick="resetForm()">
+                            <i class="fas fa-redo"></i> Empezar de nuevo
+                        </button>
+                    </div>
+                </div>
 
-    <button onclick="generarRutina()">Generar rutina</button>
-  </div>
-</section>
+                <div class="routine-grid" id="routine-container">
+                    <!-- Cards will be dynamically injected here -->
+                </div>
 
-<!-- RESULTADO -->
-<section class="resultado">
-  <h2>Tu rutina</h2>
-  <div id="rutina"></div>
-</section>
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="far fa-lightbulb"></i></div>
+                    <div class="tip-content">
+                        <h3>CONSEJO:</h3>
+                        <p id="random-tip">Calienta 5-10 minutos antes de entrenar y estira al finalizar. La constancia y una buena alimentación son clave para ver resultados.</p>
+                    </div>
+                    <div class="tip-image">
+                        <i class="fas fa-blender"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<script src="script.js"></script>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="logo">Fit<span>Planner</span></div>
+            <p>Crea tu mejor versión.</p>
+            <nav class="footer-nav">
+                <a href="#">Inicio</a>
+                <a href="#">Generador</a>
+                <a href="#">Ejercicios</a>
+                <a href="#">Sobre mí</a>
+            </nav>
+            <p class="love">Hecho con <i class="fas fa-heart" style="color:#d4ff00;"></i> para ayudarte</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
